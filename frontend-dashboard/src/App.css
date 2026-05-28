@@ -1,0 +1,282 @@
+.appShell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glass Header Styling */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+}
+
+.topbarInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+}
+
+/* Modern Logo/Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brandMark {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), #06b6d4);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.brandMark::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translate(-30%, -30%) rotate(45deg); }
+  100% { transform: translate(30%, 30%) rotate(45deg); }
+}
+
+/* Highly Professional Nav Pills */
+.nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  padding: 8px 18px;
+  border-radius: 99px; /* Pill design */
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav a:hover {
+  color: var(--text-h);
+  background: rgba(13, 148, 136, 0.05);
+}
+
+.nav a.active {
+  color: #ffffff;
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+}
+
+/* Page Layouts */
+.main {
+  padding: 32px 0 60px;
+  flex-grow: 1;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--text-h) 30%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsive Grid System */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.gridResponsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .grid2, .grid3, .gridResponsive {
+    grid-template-columns: 1fr;
+  }
+  .topbarInner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .nav {
+    justify-content: center;
+  }
+}
+
+/* Glowing Status Pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--text-h);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.pillGreen {
+  background: var(--success-soft);
+  border-color: rgba(5, 150, 105, 0.25);
+  color: var(--success);
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.05);
+}
+
+.pillRed {
+  background: var(--danger-soft);
+  border-color: rgba(225, 29, 72, 0.25);
+  color: var(--danger);
+  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.05);
+}
+
+/* Tables */
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.006);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+th, td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+th {
+  background: var(--bg-soft);
+  color: var(--text-h);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+tr {
+  transition: background 0.2s ease;
+}
+
+tr:hover td {
+  background: rgba(13, 148, 136, 0.015);
+  color: var(--text-h);
+}
+
+/* Exquisite Modals / Popups */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modalContent {
+  width: 650px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 24px !important;
+  border-top: 6px solid var(--primary) !important;
+  background: #ffffff;
+  box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(15, 23, 42, 0.05) !important;
+  animation: modalScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalScaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Tabs inside dashboard */
+.tabContainer {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tabButton {
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabButton:hover {
+  color: var(--text-h);
+}
+
+.tabButton.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}

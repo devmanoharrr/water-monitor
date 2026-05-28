@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:sqlite:waterquality.db
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    database-platform: com.example.waterAPI.config.SQLiteDialect
+    hibernate:
+      ddl-auto: update
+  cloud:
+    gateway:
+      routes:
+        - id: waterquality-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/waterquality/**
+        - id: monitoring-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/monitoring/**
+server:
+  port: 8080
