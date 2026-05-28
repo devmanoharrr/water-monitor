@@ -1,4 +1,4 @@
-# Water Quality Monitoring (Solo)
+# Water Quality Monitoring
 
 This project is a modular web application consisting of three main components:
 
